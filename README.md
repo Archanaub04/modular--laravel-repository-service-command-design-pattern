@@ -13,13 +13,13 @@ modular larvel:
 laravel 11 setup:
 
 
-1. laravel new projectname
+1. ```laravel new projectname```
 
 
-2. composer require nwidart/laravel-modules
+2. ```composer require nwidart/laravel-modules```
 
 
-3. php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"
+3. ```php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"```
 
 
 4. By default, the module classes are not loaded automatically. 
@@ -27,32 +27,33 @@ laravel 11 setup:
 
   composer.json:
 
-
-   "extra": {
-    "laravel": {
-        "dont-discover": []
+```
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "merge-plugin": {
+            "include": [
+                "Modules/*/composer.json"
+            ]
+        }
     },
-    "merge-plugin": {
-        "include": [
-            "Modules/*/composer.json"
-        ]
-    }
-},
+```
 
+5. ```composer dump-autoload```
 
-5. composer dump-autoload
+6. ```php artisan module:make modulename```
 
-6. php artisan module:make modulename
-
-7. php artisan module:enable modulename // to enable the module by default it will be disable
+7. ```php artisan module:enable modulename``` // to enable the module by default it will be disable
 
 8. After each module creation, run:
 
-composer dump-autoload
+```composer dump-autoload```
 
-
-inside module, when importing, not sue Module\modulename\App\-- - not use this instaed
+```
+inside module, when importing, not use Module\modulename\App\-- - not use this instead
 
 Modules\modulename\----use that. avoid using App
+```
 
 
